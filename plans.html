@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparent Tier Frameworks | KRATIVAN VALEROX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        /* Intake Modal Styles */
+        .intake-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 100000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        .intake-modal.active { display: flex; }
+        .modal-content {
+            background: #090909;
+            border: 1px solid var(--border-glass-bright);
+            border-radius: 8px;
+            max-width: 550px;
+            width: 100%;
+            padding: 3rem 2.5rem;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+        .close-modal-btn {
+            position: absolute;
+            top: 1.5rem; right: 1.5rem;
+            font-size: 1.3rem; color: var(--text-muted);
+            cursor: pointer; transition: var(--transition-smooth);
+        }
+        .close-modal-btn:hover { color: #fff; }
+        .auto-selected-badge {
+            background: rgba(11, 143, 99, 0.1);
+            border: 1px solid var(--primary-green);
+            padding: 0.75rem 1rem; border-radius: 4px;
+            font-size: 0.85rem; color: #fff; margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="alternate-bg">
+
+    <nav class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="logo-wrapper">
+                <div class="logo-main"><span class="gold-text">KRATIVAN</span> <span class="green-text">VALEROX</span></div>
+                <div class="logo-sub">by vihaan sumitansham & company</div>
+            </a>
+            <a href="index.html" class="btn btn-outline nav-btn">← Back Home</a>
+        </div>
+    </nav>
+
+    <div id="billing-summary-bar" style="position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(10,10,10,0.95); border-top: 1px solid var(--primary-gold); padding: 1.5rem 2rem; z-index: 9999; backdrop-filter: blur(10px); display: none;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h4 style="color: var(--primary-gold); font-size: 1rem; margin-bottom: 0.2rem;">Selected Frameworks Structure:</h4>
+                <p id="selected-plans-list" style="font-size: 0.85rem; color: var(--text-muted);">No plans selected</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <div style="text-align: right;">
+                    <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Total Valuation:</span>
+                    <h2 id="total-bill-amount" style="color: #fff; font-size: 1.8rem; font-weight: 700;">₹0</h2>
+                </div>
+                <button id="open-form-modal-btn" class="btn btn-gold" style="font-weight: 700; padding: 1rem 2.5rem;">Proceed to Verification</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="intake-form-modal" class="intake-modal">
+        <div class="modal-content">
+            <div id="close-modal" class="close-modal-btn"><i class="fa-solid fa-xmark"></i></div>
+            <h3 style="font-size: 1.6rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.01em;">Discovery Intake Form</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.5rem;">Please provide your operational details to initialize integration pipelines.</p>
+            
+            <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary-gold); margin-bottom: 0.45rem; font-weight: 500;">Auto-Detected Selected Frameworks</div>
+            <div id="modal-auto-plans" class="auto-selected-badge">None</div>
+
+            <form id="intake-checkout-form">
+                <div class="form-group">
+                    <label for="modal-name">Full Name</label>
+                    <input type="text" id="modal-name" required placeholder="Aarav Singhania">
+                </div>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="modal-phone">Direct Contact No</label>
+                        <input type="tel" id="modal-phone" required placeholder="+91 99999 00000">
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-email">Corporate Email</label>
+                        <input type="email" id="modal-email" required placeholder="founder@brand.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="modal-business">Business Name</label>
+                    <input type="text" id="modal-business" required placeholder="Singhania Outlets Private Limited">
+                </div>
+                
+                <button type="submit" class="btn btn-green" style="width: 100%; padding: 1rem; margin-top: 1rem; font-weight: 600;">Authorize & Secure Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <section id="plans" class="pricing-section section-padding" style="margin-top: 60px; padding-bottom: 12rem;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Investment Matrix</span>
+                <h2 class="section-title">Transparent Tier Frameworks</h2>
+                <p class="section-desc">System-printed and locked scopes ensuring absolute performance transparency. Select multiple frameworks and custom tenures to build your collective matrix.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card" data-plan-name="KV Essential" data-base-price="6999" data-billing-type="one-time">
+                    <div class="plan-name">KV Essential</div>
+                    <div class="plan-price">₹6,999<span>/One-Time</span></div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label style="font-size: 0.75rem; color: var(--primary-gold);">SELECT TIMELINE</label>
+                        <select class="plan-months-select" style="padding: 0.5rem; font-size: 0.85rem;">
+                            <option value="1">1 Time Setup</option>
+                        </select>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check"></i> GMB Setup & Map Pinning</li>
+                        <li><i class="fa-solid fa-check"></i> Local SEO Keyword Tagging</li>
+                        <li><i class="fa-solid fa-check"></i> 7 HD Product/Outlet Photos</li>
+                        <li><i class="fa-solid fa-check"></i> 1 Cinematic Mini-Reel (15s)</li>
+                        <li><i class="fa-solid fa-check"></i> QR Code Review Magnet</li>
+                    </ul>
+                    <button class="btn btn-outline plan-btn toggle-select-btn">Add to Collective Matrix</button>
+                </div>
+
+                <div class="pricing-card" data-plan-name="Bronze Plan" data-base-price="19999" data-billing-type="monthly">
+                    <div class="plan-name">Bronze Plan</div>
+                    <div class="plan-price">₹19,999<span>/Month</span></div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label style="font-size: 0.75rem; color: var(--primary-gold);">SELECT TIMELINE</label>
+                        <select class="plan-months-select" style="padding: 0.5rem; font-size: 0.85rem;">
+                            <option value="1">1 Month Retainer</option>
+                            <option value="2">2 Months Retainer</option>
+                            <option value="3">3 Months (Quarterly Expansion)</option>
+                            <option value="6">6 Months (Half-Yearly)</option>
+                            <option value="12">12 Months (Yearly Dominance)</option>
+                        </select>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check"></i> 1-Page Business Website</li>
+                        <li><i class="fa-solid fa-check"></i> .com / .in Domain Name (1 Yr)</li>
+                        <li><i class="fa-solid fa-check"></i> 1 Shoot (10 HD Photos)</li>
+                        <li><i class="fa-solid fa-check"></i> 4 High-End Cinematic Reels</li>
+                        <li><i class="fa-solid fa-check"></i> Meta Ads Management</li>
+                    </ul>
+                    <button class="btn btn-outline plan-btn toggle-select-btn">Add to Collective Matrix</button>
+                </div>
+
+                <div class="pricing-card recommended" data-plan-name="Silver Plan" data-base-price="34999" data-billing-type="monthly">
+                    <div class="badge-recommended">RECOMMENDED ANCHOR</div>
+                    <div class="plan-name">Silver Plan</div>
+                    <div class="plan-price">₹34,999<span>/Month</span></div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label style="font-size: 0.75rem; color: var(--primary-gold);">SELECT TIMELINE</label>
+                        <select class="plan-months-select" style="padding: 0.5rem; font-size: 0.85rem; background:#0c0c0c;">
+                            <option value="1">1 Month Retainer</option>
+                            <option value="2">2 Months Retainer</option>
+                            <option value="3">3 Months (Quarterly Expansion)</option>
+                            <option value="6">6 Months (Half-Yearly)</option>
+                            <option value="12">12 Months (Yearly Dominance)</option>
+                        </select>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-star"></i> 3–5 Pages Multi-Page Website</li>
+                        <li><i class="fa-solid fa-star"></i> Google Maps SEO (Top 3 Target)</li>
+                        <li><i class="fa-solid fa-star"></i> 1 Shoot (20 HD Product Photos)</li>
+                        <li><i class="fa-solid fa-star"></i> 8 Cinematic Storytelling Reels</li>
+                        <li><i class="fa-solid fa-star"></i> Meta & Google Search Ads</li>
+                    </ul>
+                    <button class="btn btn-green plan-btn toggle-select-btn">Add to Collective Matrix</button>
+                </div>
+
+                <div class="pricing-card recommended-gold" data-plan-name="Gold Branding" data-base-price="74999" data-billing-type="monthly">
+                    <div class="badge-gold">PREMIUM APEX MONOPOLY</div>
+                    <div class="plan-name">Gold Branding</div>
+                    <div class="plan-price">₹74,999<span>/Month</span></div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label style="font-size: 0.75rem; color: var(--primary-gold);">SELECT TIMELINE</label>
+                        <select class="plan-months-select" style="padding: 0.5rem; font-size: 0.85rem; background:#0c0c0c;">
+                            <option value="1">1 Month Retainer</option>
+                            <option value="2">2 Months Retainer</option>
+                            <option value="3">3 Months (Quarterly Expansion)</option>
+                            <option value="6">6 Months (Half-Yearly)</option>
+                            <option value="12">12 Months (Yearly Dominance)</option>
+                        </select>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-gem"></i> Logo & Color Palette Overhaul</li>
+                        <li><i class="fa-solid fa-gem"></i> 2 Specialized Shoots (40+ HD)</li>
+                        <li><i class="fa-solid fa-gem"></i> 15 Elite Reels with Transitions</li>
+                        <li><i class="fa-solid fa-gem"></i> 3-Day Lucknow Prime Billboard</li>
+                        <li><i class="fa-solid fa-gem"></i> Meta, Google & YouTube Ads</li>
+                    </ul>
+                    <button class="btn btn-gold plan-btn toggle-select-btn">Add to Collective Matrix</button>
+                </div>
+
+                <div class="pricing-card" data-plan-name="Platinum Legacy" data-base-price="149999" data-billing-type="monthly">
+                    <div class="plan-name">Platinum Legacy</div>
+                    <div class="plan-price">₹1,49,999<span>/Month</span></div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label style="font-size: 0.75rem; color: var(--primary-gold);">SELECT TIMELINE</label>
+                        <select class="plan-months-select" style="padding: 0.5rem; font-size: 0.85rem;">
+                            <option value="1">1 Month Retainer</option>
+                            <option value="2">2 Months Retainer</option>
+                            <option value="3">3 Months Retainer</option>
+                            <option value="6">6 Months Retainer</option>
+                            <option value="12">12 Months Retainer</option>
+                        </select>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check"></i> Framed Certificate & Folders</li>
+                        <li><i class="fa-solid fa-check"></i> 5 Strategic Lucknow Billboards</li>
+                        <li><i class="fa-solid fa-check"></i> FPV Drone Shots (4K Aesthetic)</li>
+                        <li><i class="fa-solid fa-check"></i> 1 Mid + 2 Micro Influencer Ties</li>
+                        <li><i class="fa-solid fa-check"></i> Full Conversion Order Management</li>
+                    </ul>
+                    <button class="btn btn-outline plan-btn toggle-select-btn">Add to Collective Matrix</button>
+                </div>
+
+                <div class="pricing-card" data-plan-name="Diamond Elite" data-base-price="199999" data-billing-type="monthly">
+                    <div class="plan-name">Diamond Elite</div>
+                    <div class="plan-price">₹1,99,999<span>/Month</span></div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label style="font-size: 0.75rem; color: var(--primary-gold);">SELECT TIMELINE</label>
+                        <select class="plan-months-select" style="padding: 0.5rem; font-size: 0.85rem;">
+                            <option value="1">1 Month Retainer</option>
+                            <option value="2">2 Months Retainer</option>
+                            <option value="6">6 Months Retainer</option>
+                            <option value="12">12 Months Retainer</option>
+                        </select>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check"></i> High-Performance Interactive Site</li>
+                        <li><i class="fa-solid fa-check"></i> 8-10 4K FPV Drone Sequences</li>
+                        <li><i class="fa-solid fa-check"></i> Elite Influencer Collaboration</li>
+                        <li><i class="fa-solid fa-check"></i> 1 High-Finished Durable LED Sign</li>
+                        <li><i class="fa-solid fa-check"></i> NFC-Enabled Smart Business Card</li>
+                    </ul>
+                    <button class="btn btn-outline plan-btn toggle-select-btn">Add to Collective Matrix</button>
+                </div>
+
+                <div class="pricing-card" data-plan-name="Titanium Legacy" data-base-price="499999" data-billing-type="monthly">
+                    <div class="plan-name">Titanium Legacy</div>
+                    <div class="plan-price">₹4,99,999<span>/Month</span></div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label style="font-size: 0.75rem; color: var(--primary-gold);">SELECT TIMELINE</label>
+                        <select class="plan-months-select" style="padding: 0.5rem; font-size: 0.85rem;">
+                            <option value="1">1 Month Retainer</option>
+                            <option value="2">2 Months Retainer</option>
+                            <option value="6">6 Months Retainer</option>
+                            <option value="12">12 Months Retainer</option>
+                        </select>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check"></i> 24K Gold Plated Founder Pen</li>
+                        <li><i class="fa-solid fa-check"></i> Full E-Commerce CRM Platform</li>
+                        <li><i class="fa-solid fa-check"></i> 1 Full-Page National Ad</li>
+                        <li><i class="fa-solid fa-check"></i> Unlimited 4K Reels & Anthem</li>
+                        <li><i class="fa-solid fa-check"></i> Absolute Market Monopoly</li>
+                    </ul>
+                    <button class="btn btn-outline plan-btn toggle-select-btn">Add to Collective Matrix</button>
+                </div>
+
+                <div class="pricing-card bespoke-card" data-plan-name="Bespoke Strategic" data-base-price="50000" data-billing-type="one-time">
+                    <div class="plan-name">Bespoke Strategic</div>
+                    <div class="plan-price">Custom Scope <span>(Min ₹50K Deposit)</span></div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label style="font-size: 0.75rem; color: var(--primary-gold);">DIAGNOSTIC DEPOSIT</label>
+                        <select class="plan-months-select" style="padding: 0.5rem; font-size: 0.85rem;">
+                            <option value="1">Initial Setup Mobilization</option>
+                        </select>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fa-solid fa-check"></i> Fully Customized Diagnostic Matrix</li>
+                        <li><i class="fa-solid fa-check"></i> Tailored Media Allocation Layouts</li>
+                        <li><i class="fa-solid fa-check"></i> 50% Non-Refundable Mobilization Fee</li>
+                        <li><i class="fa-solid fa-check"></i> Custom Term Scale Parameters</li>
+                    </ul>
+                    <button class="btn btn-outline plan-btn toggle-select-btn">Add to Collective Matrix</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <form id="dashboard-hidden-form" action="https://formsubmit.co/xyz@gmail.com" method="POST" style="display:none;">
+        <input type="text" name="Client_Full_Name" id="hidden-client-name">
+        <input type="text" name="Client_Phone" id="hidden-client-phone">
+        <input type="text" name="Client_Corporate_Email" id="hidden-client-email">
+        <input type="text" name="Client_Business_Name" id="hidden-client-business">
+        <input type="text" name="Purchased_Matrix_Plans" id="hidden-plan-name">
+        <input type="text" name="Total_Paid_Valuation" id="hidden-plan-cost">
+        <input type="text" name="Razorpay_Payment_ID" id="hidden-payment-id">
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
